@@ -16,3 +16,19 @@ const Customer = mongoose.model('Customer', customerSchema);
 
 // Export the model:
 module.exports = Customer;
+
+// Welcome message
+
+console.log("Welcome to this database, user!")
+
+// Choices
+
+const choices = () => {
+    let create === 1
+    let view === 2
+    let update === 3
+    let delete === 4
+    let quit === 5
+}
+
+mongoose.connection.close()

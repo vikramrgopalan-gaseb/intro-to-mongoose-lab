@@ -23,6 +23,13 @@ const connect = async () => {
 
 const runQueries = async () => {
   console.log('Queries running.')
+
+// import the model into queies js
+
+// create functions for CRUD and return the result
+
+// use export and import into app js
+
   // The functions calls to run queries in our db will go here as we write them.
 };
 
