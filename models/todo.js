@@ -1,12 +1,12 @@
 // models/todo.js
 const mongoose = require('mongoose');
 
-const todoSchema = new mongoose.Schema({
-  text: String,
-  isComplete: Boolean,
+const customerSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
 });
 
 // models/todo.js
-const Todo = mongoose.model('Todo', todoSchema);
+const Customer = mongoose.model('Customer', customerSchema);
 
-module.exports = Todo;
+module.exports = Customer;
