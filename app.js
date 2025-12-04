@@ -23,12 +23,20 @@ console.log("Welcome to this database, user!")
 
 // Choices
 
+let create === 1
+let view === 2
+let update === 3
+let delete === 4
+let quit === 5
 const choices = () => {
-    let create === 1
-    let view === 2
-    let update === 3
-    let delete === 4
-    let quit === 5
+    if choice === 1
+        return new
+
+        else if choice === 2
+                return view
+
+                else if choice === 3
+
 }
 
 mongoose.connection.close()

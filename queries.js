@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
 
+const Customer = require('./models/customers')
+
 const connect = async () => {
   // Connect to MongoDB using the MONGODB_URI specified in our .env file.
   await mongoose.connect(process.env.MONGODB_URI);
@@ -24,9 +26,17 @@ const connect = async () => {
 const runQueries = async () => {
   console.log('Queries running.')
 
-// import the model into queies js
+// import the model into queries js
 
 // create functions for CRUD and return the result
+
+await createCustomer
+
+await viewCustomer
+
+await updateCustomer
+
+await deleteCustomer
 
 // use export and import into app js
 
@@ -35,3 +45,38 @@ const runQueries = async () => {
 
 connect()
 /*------------------------------ Query Functions -----------------------------*/
+
+const createCustomer = async () => {
+    const customerData = {
+        name: "Matt",
+        age: 43,
+    }
+
+    const customer = await Customer.create(customerData)
+    console.log("New Customer:", customer)
+}
+
+const viewCustomers = async () => {
+    const customers = await Customer.find({})
+    console.log('All Customers:', customer)
+}
+
+/* const findSingleCustomer = async () => {
+    const customer = await Customer.findOne({ name: 'NAME' })
+    console.log('Single Customer:', customer)
+} */
+
+const updateCustomer = async () => {
+    const id = 'ID'
+    const updatedCustomer = await Customer.findByIdAndUpdate(id, 
+        {isComplete: true},
+        {new: true}
+    )
+    console.log('Updated Customer:', updatedCustomer)
+}
+
+const deleteCustomer = async () => {
+    const id = 'ID'
+    const removedCustomer = await Customer.findByIdAndDelete(id)
+    console.log('Removed Customer:', removedCustomer)
+}

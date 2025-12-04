@@ -1,4 +1,4 @@
-// models/todo.js
+// models/customers.js
 const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
@@ -6,7 +6,7 @@ const customerSchema = new mongoose.Schema({
   age: Number,
 });
 
-// models/todo.js
+// models/customers.js
 const Customer = mongoose.model('Customer', customerSchema);
 
 module.exports = Customer;
