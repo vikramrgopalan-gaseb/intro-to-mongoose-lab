@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
 
-const Customer = require('./models/customers')
+const Customer = require('./models/customers') // THIS IS AN IMPORT
 
 const connect = async () => {
   // Connect to MongoDB using the MONGODB_URI specified in our .env file.
@@ -28,16 +28,6 @@ const runQueries = async () => {
 
 // import the model into queries js
 
-// create functions for CRUD and return the result
-
-await createCustomer
-
-await viewCustomer
-
-await updateCustomer
-
-await deleteCustomer
-
 // use export and import into app js
 
   // The functions calls to run queries in our db will go here as we write them.
@@ -45,6 +35,8 @@ await deleteCustomer
 
 connect()
 /*------------------------------ Query Functions -----------------------------*/
+
+// MAKE SURE YOU EXPORT THESE TO A.JS CORRECTLY
 
 const createCustomer = async () => {
     const customerData = {
@@ -80,3 +72,9 @@ const deleteCustomer = async () => {
     const removedCustomer = await Customer.findByIdAndDelete(id)
     console.log('Removed Customer:', removedCustomer)
 }
+
+module.exports = {
+    deleteCustomer,
+
+}
+

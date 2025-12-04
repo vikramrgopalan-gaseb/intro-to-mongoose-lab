@@ -4,24 +4,30 @@ const username = prompt('What is your name? ');
 
 console.log(`Your name is ${username}`); */
 
-const mongoose = require('mongoose')
+/* const mongoose = require('mongoose')
 
 const customerSchema = new mongoose.Schema({
   name: String,
   age: Number,
-});
+}); */
 
 // Compile the schema into a model:
-const Customer = mongoose.model('Customer', customerSchema);
+/* const Customer = mongoose.model('Customer', customerSchema);
 
 // Export the model:
-module.exports = Customer;
+module.exports = Customer; */
+
+// REVIEW THE LECTURE NOTES TO IMPORT THE MODEL HERE
+
+// LOOK AT HOW TO IMPORT FUNCTIONS INTO THIS FILE
+
+// EXPORT THE CONNECT FUNCTION INTO THIS FILE
 
 // Welcome message
 
 console.log("Welcome to this database, user!")
 
-// Choices
+// Choices - ENCAPSULATE THIS INTO RUNQUERIES THEN EXPORT TO Q.JS
 
 let create === 1
 let view === 2
