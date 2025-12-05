@@ -17,17 +17,27 @@ const customerSchema = new mongoose.Schema({
 // Export the model:
 module.exports = Customer; */
 
-// REVIEW THE LECTURE NOTES TO IMPORT THE MODEL HERE
-
 // LOOK AT HOW TO IMPORT FUNCTIONS INTO THIS FILE
 
 // EXPORT THE CONNECT FUNCTION INTO THIS FILE
+
+const connect = require('/queries')
 
 // Welcome message
 
 console.log("Welcome to this database, user!")
 
 // Choices - ENCAPSULATE THIS INTO RUNQUERIES THEN EXPORT TO Q.JS
+
+const Customer = require('/queries')
+
+const createCustomer = require('/queries')
+
+const viewCustomers = require('/queries')
+
+const updateCustomer = require('/queries')
+
+const deleteCustomer = require('/queries')
 
 let create === 1
 let view === 2

@@ -26,11 +26,14 @@ const connect = async () => {
 const runQueries = async () => {
   console.log('Queries running.')
 
-// import the model into queries js
+  module.exports = Customer
 
-// use export and import into app js
+  module.exports = connect
 
   // The functions calls to run queries in our db will go here as we write them.
+
+  // use export and import into app js
+  
 };
 
 connect()
@@ -43,7 +46,6 @@ const createCustomer = async () => {
         name: "Matt",
         age: 43,
     }
-
     const customer = await Customer.create(customerData)
     console.log("New Customer:", customer)
 }
@@ -75,6 +77,8 @@ const deleteCustomer = async () => {
 
 module.exports = {
     deleteCustomer,
-
+    updateCustomer,
+    viewCustomers,
+    createCustomer,
 }
 
