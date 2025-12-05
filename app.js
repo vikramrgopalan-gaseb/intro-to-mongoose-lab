@@ -1,58 +1,50 @@
-/* const prompt = require('prompt-sync')();
+// Welcome message
 
-const username = prompt('What is your name? ');
-
-console.log(`Your name is ${username}`); */
-
-/* const mongoose = require('mongoose')
-
-const customerSchema = new mongoose.Schema({
-  name: String,
-  age: Number,
-}); */
-
-// Compile the schema into a model:
-/* const Customer = mongoose.model('Customer', customerSchema);
-
-// Export the model:
-module.exports = Customer; */
-
-// LOOK AT HOW TO IMPORT FUNCTIONS INTO THIS FILE
+console.log("Welcome to this database, user!")
 
 // EXPORT THE CONNECT FUNCTION INTO THIS FILE
 
 const connect = require('/queries')
 
-// Welcome message
+const Customer = require('./models/customers')
 
-console.log("Welcome to this database, user!")
-
-// Choices - ENCAPSULATE THIS INTO RUNQUERIES THEN EXPORT TO Q.JS
-
-const Customer = require('/queries')
-
-const createCustomer = require('/queries')
-
-const viewCustomers = require('/queries')
-
-const updateCustomer = require('/queries')
-
-const deleteCustomer = require('/queries')
-
-let create === 1
-let view === 2
-let update === 3
-let delete === 4
-let quit === 5
-const choices = () => {
-    if choice === 1
-        return new
-
-        else if choice === 2
-                return view
-
-                else if choice === 3
-
+const createCustomer = async () => {
+    const customerData = {
+        name: "Matt",
+        age: 43,
+    }
+    const customer = await Customer.create(customerData)
+    console.log("New Customer:", newCustomer)
 }
 
-mongoose.connection.close()
+const viewCustomers = async () => {
+    const customers = await Customer.find({})
+    console.log('All Customers:', customer)
+}
+
+/* const findSingleCustomer = async () => {
+    const customer = await Customer.findOne({ name: 'NAME' })
+    console.log('Single Customer:', customer)
+} */
+
+const updateCustomer = async () => {
+    const id = 'ID'
+    const updatedCustomer = await Customer.findByIdAndUpdate(id, 
+        {isComplete: true},
+        {new: true}
+    )
+    console.log('Updated Customer:', updatedCustomer)
+}
+
+const deleteCustomer = async () => {
+    const id = 'ID'
+    const removedCustomer = await Customer.findByIdAndDelete(id)
+    console.log('Removed Customer:', removedCustomer)
+}
+
+module.exports = {
+    deleteCustomer,
+    updateCustomer,
+    viewCustomers,
+    createCustomer,
+}

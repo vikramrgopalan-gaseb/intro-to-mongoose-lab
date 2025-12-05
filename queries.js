@@ -6,6 +6,14 @@ const mongoose = require('mongoose');
 
 const Customer = require('./models/customers') // THIS IS AN IMPORT
 
+const createCustomer = require('app')
+
+const viewCustomers = require('app')
+
+const updateCustomer = require('app')
+
+const deleteCustomer = require('app')
+
 const connect = async () => {
   // Connect to MongoDB using the MONGODB_URI specified in our .env file.
   await mongoose.connect(process.env.MONGODB_URI);
@@ -26,59 +34,46 @@ const connect = async () => {
 const runQueries = async () => {
   console.log('Queries running.')
 
-  module.exports = Customer
-
-  module.exports = connect
-
   // The functions calls to run queries in our db will go here as we write them.
 
-  // use export and import into app js
-  
+  await createCustomer()
+  await viewCustomers()
+  await updateCustomer()
+  await deleteCustomer()
+
 };
 
 connect()
 /*------------------------------ Query Functions -----------------------------*/
 
-// MAKE SURE YOU EXPORT THESE TO A.JS CORRECTLY
+// build the CRM options for the user here
 
-const createCustomer = async () => {
-    const customerData = {
-        name: "Matt",
-        age: 43,
-    }
-    const customer = await Customer.create(customerData)
-    console.log("New Customer:", customer)
+let create = 1
+let view = 2
+let update = 3
+let delete = 4
+let quit = 5
+
+const choices = (choice) => {
+
+    if choice === 1
+       createCustomer()
+       console.log('Created a new customer')
+
+        else if choice === 2
+                viewCustomers()
+                console.log('Here are your customers')
+
+                else if choice === 3
+                        updateCustomer()
+                        console.log('Updated a customer')
+
+                        else if choice === 4
+                                deleteCustomer()
+                                console.log('Deleted a customer')
+
+                                else if choice ==== 5
+                                mongoose.connection.close()
+                                console.log('Closed. Thank you!')
+
 }
-
-const viewCustomers = async () => {
-    const customers = await Customer.find({})
-    console.log('All Customers:', customer)
-}
-
-/* const findSingleCustomer = async () => {
-    const customer = await Customer.findOne({ name: 'NAME' })
-    console.log('Single Customer:', customer)
-} */
-
-const updateCustomer = async () => {
-    const id = 'ID'
-    const updatedCustomer = await Customer.findByIdAndUpdate(id, 
-        {isComplete: true},
-        {new: true}
-    )
-    console.log('Updated Customer:', updatedCustomer)
-}
-
-const deleteCustomer = async () => {
-    const id = 'ID'
-    const removedCustomer = await Customer.findByIdAndDelete(id)
-    console.log('Removed Customer:', removedCustomer)
-}
-
-module.exports = {
-    deleteCustomer,
-    updateCustomer,
-    viewCustomers,
-    createCustomer,
-}
-
