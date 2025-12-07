@@ -6,13 +6,12 @@ const mongoose = require('mongoose');
 
 const Customer = require('./models/customers') // THIS IS AN IMPORT
 
-const createCustomer = require('app')
-
-const viewCustomers = require('app')
-
-const updateCustomer = require('app')
-
-const deleteCustomer = require('app')
+const {
+    deleteCustomer,
+    updateCustomer,
+    viewCustomers,
+    createCustomer,
+} = require('app') // THIS IS IMPORTING FUNCTIONS IN BULK
 
 const connect = async () => {
   // Connect to MongoDB using the MONGODB_URI specified in our .env file.
@@ -36,44 +35,40 @@ const runQueries = async () => {
 
   // The functions calls to run queries in our db will go here as we write them.
 
-  await createCustomer()
-  await viewCustomers()
-  await updateCustomer()
-  await deleteCustomer()
+    let create = 1
+    let view = 2
+    let update = 3
+    let delete = 4
+    let quit = 5
 
-};
+    const choices = (choice) => {
+
+        if choice === 1
+        createCustomer()
+        console.log('Created a new customer')
+
+            else if choice === 2
+                    viewCustomers()
+                    console.log('Here are your customers')
+
+                    else if choice === 3
+                            updateCustomer()
+                            console.log('Updated a customer')
+
+                            else if choice === 4
+                                    deleteCustomer()
+                                    console.log('Deleted a customer')
+
+                                    else if choice === 5
+                                    mongoose.connection.close()
+                                    console.log('Closed. Thank you!')
+
+}};
 
 connect()
 /*------------------------------ Query Functions -----------------------------*/
 
 // build the CRM options for the user here
 
-let create = 1
-let view = 2
-let update = 3
-let delete = 4
-let quit = 5
 
-const choices = (choice) => {
 
-    if choice === 1
-       createCustomer()
-       console.log('Created a new customer')
-
-        else if choice === 2
-                viewCustomers()
-                console.log('Here are your customers')
-
-                else if choice === 3
-                        updateCustomer()
-                        console.log('Updated a customer')
-
-                        else if choice === 4
-                                deleteCustomer()
-                                console.log('Deleted a customer')
-
-                                else if choice ==== 5
-                                mongoose.connection.close()
-                                console.log('Closed. Thank you!')
-
-}
