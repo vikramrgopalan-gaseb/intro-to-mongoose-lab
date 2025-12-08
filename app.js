@@ -15,7 +15,7 @@ const createCustomer = async () => {
 
 const viewCustomers = async () => {
     const customers = await Customer.find({})
-    console.log('All Customers:', customer)
+    console.log('All Customers:', customers)
 }
 
 /* const findSingleCustomer = async () => {
@@ -23,12 +23,10 @@ const viewCustomers = async () => {
     console.log('Single Customer:', customer)
 } */
 
-const updateCustomer = async (// ID and data object) => {
-    const id = 'ID'
-    const updatedCustomer = await Customer.findByIdAndUpdate(id, 
+const updateCustomer = async (id, data) => {
+    const updatedCustomer = await Customer.findByIdAndUpdate(id, data,
         {isComplete: true},
         {new: true}
-        // include object for name and age here
     )
     console.log('Updated Customer:', updatedCustomer)
 }
@@ -38,6 +36,8 @@ const deleteCustomer = async () => {
     const removedCustomer = await Customer.findByIdAndDelete(id)
     console.log('Removed Customer:', removedCustomer)
 }
+
+const prompt = require('prompt-sync')();
 
 const makeChoice = () => {
    const userChoice = prompt(`What would you like to do?
@@ -53,10 +53,24 @@ const makeChoice = () => {
     return userChoice
 }
 
+const updateInfo = () => {
+    // get all the IDs of the customers first
+    const custInfo = prompt(`Enter the ID and data for this customer`)
+
+    // have a separate prompt for the new ID and age
+
+    // return a new objacr {
+    name:
+    age:
+    // create object here?
+    return custInfo
+}
+
 module.exports = {
     deleteCustomer,
     updateCustomer,
     viewCustomers,
     createCustomer,
     makeChoice,
+    updateInfo,
 }

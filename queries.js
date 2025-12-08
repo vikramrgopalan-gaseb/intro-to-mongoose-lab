@@ -12,6 +12,7 @@ const {
     viewCustomers,
     createCustomer,
     makeChoice,
+    updateInfo,
 } = require('./app') // THIS IS IMPORTING FUNCTIONS IN BULK
 
 const prompt = require('prompt-sync')();
@@ -39,41 +40,45 @@ const runQueries = async () => {
 
   // The functions calls to run queries in our db will go here as we write them.
   
-    let crudChoice = makeChoice()
+   let crudChoice = makeChoice()
+
+    while (true) {
 
     switch (crudChoice) {
         case '1':
-            createCustomer()
+            await createCustomer()
             console.log('Created a new customer')
+            crudChoice = makeChoice()
             break;
+            
         case '2' :
-            viewCustomers()
+            await viewCustomers()
             console.log('Here are your customers')
+            crudChoice = makeChoice()
             break;
         case '3' :
-            // INCLUDE PROMPT FOR NANE AND AGE
-            updateCustomer()
+            await updateInfo()
+            updateCustomer(id, data)
             console.log('Updated a customer')
+            crudChoice = makeChoice()
             break;
         case '4' :
-            deleteCustomer()
+            await deleteCustomer()
             console.log('Deleted a customer')
+            crudChoice = makeChoice()
             break;
         case '5' :
             mongoose.connection.close()
             console.log('Closed. Thank you!')
+            crudChoice = makeChoice()
             break;
         default :
-            makeChoice()
+            crudChoice = makeChoice()
 
-}};
-
-// figure out how to get the switch statement to loop
+}};}
 
 connect()
 /*------------------------------ Query Functions -----------------------------*/
-
-// build the CRM options for the user here
 
 
 
