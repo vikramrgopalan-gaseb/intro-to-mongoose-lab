@@ -11,7 +11,10 @@ const {
     updateCustomer,
     viewCustomers,
     createCustomer,
-} = require('app') // THIS IS IMPORTING FUNCTIONS IN BULK
+    makeChoice,
+} = require('./app') // THIS IS IMPORTING FUNCTIONS IN BULK
+
+const prompt = require('prompt-sync')();
 
 const connect = async () => {
   // Connect to MongoDB using the MONGODB_URI specified in our .env file.
@@ -21,6 +24,7 @@ const connect = async () => {
   // Call the runQueries function, which will eventually hold functions to work
   // with data in our db.
   await runQueries()
+
 
   // Disconnect our app from MongoDB after our queries run.
   await mongoose.disconnect();
@@ -34,36 +38,37 @@ const runQueries = async () => {
   console.log('Queries running.')
 
   // The functions calls to run queries in our db will go here as we write them.
+  
+    let crudChoice = makeChoice()
 
-    let create = 1
-    let view = 2
-    let update = 3
-    let delete = 4
-    let quit = 5
-
-    const choices = (choice) => {
-
-        if choice === 1
-        createCustomer()
-        console.log('Created a new customer')
-
-            else if choice === 2
-                    viewCustomers()
-                    console.log('Here are your customers')
-
-                    else if choice === 3
-                            updateCustomer()
-                            console.log('Updated a customer')
-
-                            else if choice === 4
-                                    deleteCustomer()
-                                    console.log('Deleted a customer')
-
-                                    else if choice === 5
-                                    mongoose.connection.close()
-                                    console.log('Closed. Thank you!')
+    switch (crudChoice) {
+        case '1':
+            createCustomer()
+            console.log('Created a new customer')
+            break;
+        case '2' :
+            viewCustomers()
+            console.log('Here are your customers')
+            break;
+        case '3' :
+            // INCLUDE PROMPT FOR NANE AND AGE
+            updateCustomer()
+            console.log('Updated a customer')
+            break;
+        case '4' :
+            deleteCustomer()
+            console.log('Deleted a customer')
+            break;
+        case '5' :
+            mongoose.connection.close()
+            console.log('Closed. Thank you!')
+            break;
+        default :
+            makeChoice()
 
 }};
+
+// figure out how to get the switch statement to loop
 
 connect()
 /*------------------------------ Query Functions -----------------------------*/

@@ -2,10 +2,6 @@
 
 console.log("Welcome to this database, user!")
 
-// EXPORT THE CONNECT FUNCTION INTO THIS FILE
-
-const connect = require('/queries')
-
 const Customer = require('./models/customers')
 
 const createCustomer = async () => {
@@ -27,11 +23,12 @@ const viewCustomers = async () => {
     console.log('Single Customer:', customer)
 } */
 
-const updateCustomer = async () => {
+const updateCustomer = async (// ID and data object) => {
     const id = 'ID'
     const updatedCustomer = await Customer.findByIdAndUpdate(id, 
         {isComplete: true},
         {new: true}
+        // include object for name and age here
     )
     console.log('Updated Customer:', updatedCustomer)
 }
@@ -42,9 +39,24 @@ const deleteCustomer = async () => {
     console.log('Removed Customer:', removedCustomer)
 }
 
+const makeChoice = () => {
+   const userChoice = prompt(`What would you like to do?
+
+    1. Create a customer
+    2. View all customers
+    3. Update a customer
+    4. Delete a customer
+    5. Quit;
+
+    Number of action to run: `) 
+
+    return userChoice
+}
+
 module.exports = {
     deleteCustomer,
     updateCustomer,
     viewCustomers,
     createCustomer,
+    makeChoice,
 }
