@@ -9,9 +9,13 @@ const createCustomer = async () => {
         name: "Matt",
         age: 43,
     }
-    const customer = await Customer.create(customerData)
+    const newCustomer = await Customer.create(customerData)
     console.log("New Customer:", newCustomer)
 }
+
+// add a prompt in createCustomer - 1 for name and 1 for aage
+
+// remove lines 8-11
 
 const viewCustomers = async () => {
     const customers = await Customer.find({})
@@ -31,8 +35,16 @@ const updateCustomer = async (id, data) => {
     console.log('Updated Customer:', updatedCustomer)
 }
 
+const updateInfo = () => {
+    viewCustomers()
+    const custInfo = prompt(`Enter the ID for the customer you want to update`)
+    return custInfo
+}
+
+// combine both update functions above
+
 const deleteCustomer = async () => {
-    const id = 'ID'
+    const id = prompt(`Enter the ID for the customer you want to delete`)
     const removedCustomer = await Customer.findByIdAndDelete(id)
     console.log('Removed Customer:', removedCustomer)
 }
@@ -51,19 +63,6 @@ const makeChoice = () => {
     Number of action to run: `) 
 
     return userChoice
-}
-
-const updateInfo = () => {
-    // get all the IDs of the customers first
-    const custInfo = prompt(`Enter the ID and data for this customer`)
-
-    // have a separate prompt for the new ID and age
-
-    // return a new objacr {
-    name:
-    age:
-    // create object here?
-    return custInfo
 }
 
 module.exports = {

@@ -57,8 +57,7 @@ const runQueries = async () => {
             crudChoice = makeChoice()
             break;
         case '3' :
-            await updateInfo()
-            updateCustomer(id, data)
+            await updateCustomer(id, data) // delete PARAMS when done
             console.log('Updated a customer')
             crudChoice = makeChoice()
             break;
