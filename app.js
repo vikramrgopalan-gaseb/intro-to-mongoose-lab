@@ -4,18 +4,21 @@ console.log("Welcome to this database, user!")
 
 const Customer = require('./models/customers')
 
+const firstCustomer = {
+    name: "Matt",
+    age: 43,
+}
+
 const createCustomer = async () => {
+    const newName = prompt(`Enter the name of your new customer`)
+    const newAge = prompt(`Enter the age of your new customer`)
     const customerData = {
-        name: "Matt",
-        age: 43,
+            name: newName,
+            age: newAge
     }
     const newCustomer = await Customer.create(customerData)
     console.log("New Customer:", newCustomer)
 }
-
-// add a prompt in createCustomer - 1 for name and 1 for aage
-
-// remove lines 8-11
 
 const viewCustomers = async () => {
     const customers = await Customer.find({})
