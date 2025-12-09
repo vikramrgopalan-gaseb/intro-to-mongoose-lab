@@ -30,21 +30,15 @@ const viewCustomers = async () => {
     console.log('Single Customer:', customer)
 } */
 
-const updateCustomer = async (id, data) => {
-    const updatedCustomer = await Customer.findByIdAndUpdate(id, data,
-        {isComplete: true},
-        {new: true}
-    )
-    console.log('Updated Customer:', updatedCustomer)
-}
-
-const updateInfo = () => {
+const updateCustomer = async () => {
     viewCustomers()
     const custInfo = prompt(`Enter the ID for the customer you want to update`)
-    return custInfo
+    const updatedCustomer = await Customer.findById(custInfo)
+        updatedCustomer.name = prompt(`What is the customers new name?`);
+        updatedCustomer.age = prompt(`What is the customers new age?`);
+    await updatedCustomer.save();
+    console.log('Updated Customer:', updatedCustomer)
 }
-
-// combine both update functions above
 
 const deleteCustomer = async () => {
     const id = prompt(`Enter the ID for the customer you want to delete`)
@@ -74,5 +68,4 @@ module.exports = {
     viewCustomers,
     createCustomer,
     makeChoice,
-    updateInfo,
 }

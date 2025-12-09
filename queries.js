@@ -12,7 +12,6 @@ const {
     viewCustomers,
     createCustomer,
     makeChoice,
-    updateInfo,
 } = require('./app') // THIS IS IMPORTING FUNCTIONS IN BULK
 
 const prompt = require('prompt-sync')();
@@ -57,7 +56,7 @@ const runQueries = async () => {
             crudChoice = makeChoice()
             break;
         case '3' :
-            await updateCustomer(id, data) // delete PARAMS when done
+            await updateCustomer()
             console.log('Updated a customer')
             crudChoice = makeChoice()
             break;
